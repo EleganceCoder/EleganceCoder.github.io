@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search> 
+  
+  
+    
+    <entry>
+      <title>vscode基于cmake构建最小c++项目</title>
+      <link href="/2023/12/11/vscode%E5%9F%BA%E4%BA%8Ecmake%E5%88%9B%E5%BB%BAcpp%E9%A1%B9%E7%9B%AE/"/>
+      <url>/2023/12/11/vscode%E5%9F%BA%E4%BA%8Ecmake%E5%88%9B%E5%BB%BAcpp%E9%A1%B9%E7%9B%AE/</url>
+      
+        <content type="html"><![CDATA[<h1 id="1-前言"><a href="#1-前言" class="headerlink" title="1.前言"></a>1.前言</h1><p>​<strong>Visual Studio Code (VSCode) 是一款免费、开源、轻量级的代码编辑器，由 Microsoft 开发和维护，并受到开发者的广泛青睐，其自身也有着众多优势</strong>：<br>​<strong>轻量级与高性能：</strong> Visual Studio Code 是一款轻量级的编辑器，启动速度快，占用系统资源相对较少。这使得它成为快速、高效开发的理想选择。<br>​<strong>强大的代码编辑功能：</strong> 提供智能代码补全、代码片段、语法高亮、错误突出显示等功能，帮助开发者编写高质量的代码。<br>​<strong>丰富的扩展生态系统：</strong> Visual Studio Code 的扩展系统非常强大，允许开发者通过安装插件来定制 IDE 的功能。有大量的社区贡献的插件，覆盖了几乎所有主流编程语言和工具。<br>​<strong>集成版本控制：</strong> VSCode 集成了 Git 版本控制，提供了一套直观的界面来管理代码版本，以及方便的查看修改历史和解决冲突。<br>​<strong>内置调试支持：</strong> Visual Studio Code 提供了强大的调试功能，支持多种语言的调试器，并且能够通过简单的配置进行调试。<br>​<strong>内置终端：</strong> 集成了终端，允许开发者在编辑器中执行命令，从而更好地与代码交互。<br>​<strong>开源与社区活跃：</strong> VSCode 是开源项目，其源代码托管在 GitHub 上。拥有庞大的活跃社区，使得开发者能够分享经验、解决问题，并为软件的改进提供贡献。<br>​<strong>自定义配置：</strong> 支持广泛的自定义选项，使得开发者能够根据个人喜好和工作流程进行配置，从而提高开发效率。<br>​…<br>​<strong>总之，Visual Studio Code 是一款注重开发者体验、功能强大且高度可定制的编辑器，适用于各种规模和类型的项目（建议中小型项目），其简洁而强大的特性使得它成为许多开发者的首选工具。基于此，作者将用vscode基于cmake就c++项目开发的配置作详细的讲解，帮助初学编程的朋友快速上手vscode。</strong></p><h1 id="2-准备工作"><a href="#2-准备工作" class="headerlink" title="2.准备工作"></a>2.准备工作</h1><h2 id="2-1-安装vscode"><a href="#2-1-安装vscode" class="headerlink" title="2.1 安装vscode"></a>2.1 安装vscode</h2><p>​进入<a href="https://code.visualstudio.com/" title="点击进入vscode官网">vscode官网</a>下载vscode，若使用macos系统和linux系统，选择好对应版本即可<img src="https://z1.ax1x.com/2023/12/11/piWNJZn.png" alt="piWNJZn.png" border="0" /></a></p>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+  
+  
+</search>
