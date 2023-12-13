@@ -1,7 +1,11 @@
 http://example.com/2023/12/11/vscode%E5%9F%BA%E4%BA%8Ecmake%E5%88%9B%E5%BB%BAcpp%E9%A1%B9%E7%9B%AE/
-http://example.com/tags/index-1.html
-http://example.com/about/index.html
 http://example.com/tags/index.html
 http://example.com/categories/index.html
+http://example.com/about/index.html
 http://example.com/archives/index.html
 http://example.com/
+http://example.com/tags/vscode/
+http://example.com/tags/cmake/
+http://example.com/tags/msvc/
+http://example.com/tags/c-c/
+http://example.com/categories/vscode%E5%9F%BA%E4%BA%8Ecmake%E6%9E%84%E5%BB%BAc-%E9%A1%B9%E7%9B%AE/
