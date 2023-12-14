@@ -4,6 +4,37 @@
   
     
     <entry>
+      <title>多文件编译</title>
+      <link href="/2023/12/14/%E5%A4%9A%E6%96%87%E4%BB%B6%E7%BC%96%E8%AF%91/"/>
+      <url>/2023/12/14/%E5%A4%9A%E6%96%87%E4%BB%B6%E7%BC%96%E8%AF%91/</url>
+      
+        <content type="html"><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>在C++中，通常会将代码分割到多个源文件中，然后使用编译器将它们组合成一个可执行文件，这有助于组织和维护大型项目，并提高代码的可读性；并且为了更好的管理项目文件，可能会将头文件、源文件放在不同的文件夹中。这样，就需要在CMakeLists.txt文件中告诉编译器如何预处理、编译、链接这些文件。否则，编译器会因为找不到这些文件而报错。下面我将用一个简单的例子来说明这种情况下应该如何对项目进行构建。</p><h1 id="项目介绍"><a href="#项目介绍" class="headerlink" title="项目介绍"></a>项目介绍</h1><h2 id="目录结构"><a href="#目录结构" class="headerlink" title="目录结构"></a>目录结构</h2><p><img src="/2023/12/14/%E5%A4%9A%E6%96%87%E4%BB%B6%E7%BC%96%E8%AF%91/DirectoryStructure.jpg"></p><p><strong>include文件夹：</strong>包含项目的头文件（f.h）<br><strong>src文件夹：</strong>包含源文件(main.cpp,f.cpp)</p><h2 id="文件内容"><a href="#文件内容" class="headerlink" title="文件内容"></a>文件内容</h2><p>f.h:</p><pre><code>#ifndef __F_H#define __F_H//f()函数声明void f();#endif</code></pre><p>f.cpp:</p><pre><code>#include&quot;f.h&quot;#include&lt;iostream&gt;//f()函数的定义，此函数打印当前函数的函数名称void f()&#123;std::cout&lt;&lt;__func__&lt;&lt;std::endl;&#125;</code></pre><p>main.cpp:</p><pre><code>#include&lt;iostream&gt;#include&quot;f.h&quot;int main()&#123;    //调用f()函数    f();    return 0;&#125;</code></pre><h2 id="项目分析"><a href="#项目分析" class="headerlink" title="项目分析"></a>项目分析</h2><p>可以看到此项目将头文件指定到了include文件夹里、源文件放在了src文件夹里，如果CMakeLists.txt文件还只是像我之前博客（<a href="https://elegancecoder.github.io/2023/12/11/vscode%E5%9F%BA%E4%BA%8Ecmake%E5%88%9B%E5%BB%BAcpp%E9%A1%B9%E7%9B%AE/">vscode基于cmake构建最小c++项目</a>）中那样编写：</p><pre><code> # 指定CMake的最小版本要求版本 cmake_minimum_required(VERSION 3.16)   # 指定项目名称  project(test)    # 指定需要编译的源文件和项目名称 add_executable(test main.cpp f.cpp)</code></pre><p>肯定会报各种错误🤣,这时我们需要对CMakeLists.txt文件进行略微的修改:</p><pre><code>cmake_minimum_required(VERSION 3.25)#指定c++版本set(CMAKE_CXX_STANDARD 11)#指定头文件包含目录,&quot;./&quot;是当前目录的意思,默认是CMakeLists.txt文件所在的目录include_directories(./include)project(test)#这里也应该指定编译的源文件,否则编译器找不到我们需要编译的源文件add_executable(test ./src/main.cpp ./src/f.cpp)</code></pre><p>至此,项目能够正常的编译了👌.</p><h1 id="改进"><a href="#改进" class="headerlink" title="改进"></a>改进</h1><p><strong>虽然此项目能正常编译运行,但是CMakeLists.txt文件写法依然有可改进的地方,使得文件脉络更加清晰:</strong><br>1.”.&#x2F;“写法看着别扭,意思不明确.<br>2.添加源文件时需要对CMakeLists.txt文件中的add_executable命令指定新添加的字符串.<br>3.当源文件较多时,我们需要将所有源文件指定到add_executable命令中,此时该命令太过于臃肿,不利于CMakeLists.txt文件文件的维护.</p><p><strong>改进后的CMakeLists.txt文件:</strong></p><pre><code>cmake_minimum_required(VERSION 3.25)#指定c++版本set(CMAKE_CXX_STANDARD 11)#CMAKE_CURRENT_SOURCE_DIR指的是当前正在处理的源文件的目录(因为复杂的项目可能有多重结构),这里指CMakeLists.txt所在的路径#$&#123;CMAKE_CURRENT_SOURCE_DIR&#125;:取出当前变量的值include_directories($&#123;CMAKE_CURRENT_SOURCE_DIR&#125;/include)#去$&#123;CMAKE_CURRENT_SOURCE_DIR&#125;/src路径下搜索所有后缀为cpp的文件,并将它们储存到src变量中file(GLOB src $&#123;CMAKE_CURRENT_SOURCE_DIR&#125;/src *.cpp)project(test)#取出src变量的值,用于编译成二进制exe文件add_executable(test $&#123;src&#125;)</code></pre><p>自此,项目不仅能正常编译,CMakeLists.txt文件的脉络还清爽不少👍.再有源文件需要编译只需要创建之后放在src目录下即可,CMakeLists.txt文件无须改动.</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> vscode基于cmake构建c++项目 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> vscode </tag>
+            
+            <tag> cmake </tag>
+            
+            <tag> msvc </tag>
+            
+            <tag> c/c++ </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>vscode基于cmake构建最小c++项目</title>
       <link href="/2023/12/11/vscode%E5%9F%BA%E4%BA%8Ecmake%E5%88%9B%E5%BB%BAcpp%E9%A1%B9%E7%9B%AE/"/>
       <url>/2023/12/11/vscode%E5%9F%BA%E4%BA%8Ecmake%E5%88%9B%E5%BB%BAcpp%E9%A1%B9%E7%9B%AE/</url>
